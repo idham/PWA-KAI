@@ -1,0 +1,47 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title"><i class="icon ion-briefcase energized"></i> <span class="positive">Porter Booking</span></h1>
+    <div class="buttons">
+      <button class="button button-clear button-stable icon ion-android-close" ng-click="closeModal(2)"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-divider">
+        How many porter? <span class="item-note positive">{{porter.porter_qty}}</span>
+      </ion-item>
+      <ion-item class="range animate-switch">
+        1
+        <input type="range" name="quantity" ng-model="porter.porter_qty" min="1" max="20"> 20
+      </ion-item>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Station
+        </div>
+        <select ng-model="porter.station" 
+            data-ng-options="station[0] for station in stationOptions track by station[0]">
+        </select>
+      </label>
+    </ion-list>
+    <ion-list type="card">
+      <ion-item class="item-divider">
+        Passenger
+      </ion-item>
+      <label class="item item-input">
+        <span class="input-label">Seat</span>
+        <input type="text" ng-model="porter.seat" maxlength="5" uppercase-only>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Wagon</span>
+        <input type="text" ng-model="porter.wagon" maxlength="10" uppercase-only>
+      </label>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="bar-light">
+    <div class="nav-bar">
+      <div class="nav">
+        <button class="button ion-checkmark-circled button-block button-large button-balanced" ng-click="orderPorter()">Submit</button>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

@@ -1,0 +1,52 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title"><i class="icon ion-model-s energized"></i> <span class="positive">Taxi Booking</span></h1>
+    <div class="buttons">
+      <button class="button button-clear button-stable icon ion-android-close" ng-click="closeModal(1)"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-input item-select">
+        <div class="input-label">
+          Taxi
+        </div>
+        <select ng-model="taxi.taxi" ng-options="key as value for (key , value) in taxiOptions[taxi.station[0]]"></select>
+      </ion-item>
+      <div class="item" ion-datetime-picker ng-model="taxi.pickup_time">
+        Pickup Time
+        <div class="item-right text-right">
+          {{taxi.pickup_time | date:'HH:mm'}}
+        </div>
+      </div>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Station
+        </div>
+        <select ng-model="taxi.station" 
+            data-ng-options="station[0] for station in stationOptions track by station[0]">
+        </select>
+      </label>
+    </ion-list>
+    <ion-list type="card">
+      <ion-item class="item-divider">
+        Passenger
+      </ion-item>
+      <label class="item item-input">
+        <span class="input-label">Contact Name</span>
+        <input type="text" ng-model="taxi.name" maxlength="16">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Contact Phone</span>
+        <input type="number" ng-model="taxi.contact" maxlength="13" placeholder="+62">
+      </label>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="bar-light">
+    <div class="nav-bar">
+      <div class="nav">
+        <button class="button ion-checkmark-circled button-block button-large button-balanced" ng-click="orderTaxi()">Submit</button>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

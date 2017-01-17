@@ -1,0 +1,29 @@
+<ion-view class="order" hide-nav-bar="true" cache-view="false">
+  <ion-content class="has-footer">
+    <div class="hero text-center">
+      <i class="icon large ion-model-s positive"></i>
+      <div class="nota">
+        <h2>{{ (order.nota) ? order.nota : 'loading...'}}</h2>
+      </div>
+      <p ng-if="order.vendor && order.vendor !== ''">Status: Found Taxi ({{order.vendor}})</p>
+      <p ng-if="order.vendor === ''">Status: Order Submitted</p>
+    </div>
+    <ion-list type="card" class="info" ng-if="!isLoading">
+      <ion-item class="item-divider" ng-click="doRefresh()">Detail Order <span class="item-note balanced"><i class="icon ion-refresh"></i></span></ion-item>
+      <ion-item>Book Code <span class="item-note">{{order.book_code}}</span></ion-item>
+      <ion-item>Station <span class="item-note">{{order.stasiun}}</span></ion-item>
+      <ion-item>Train <span class="item-note">{{dorderata.train_name}} {{order.train_no}}</span></ion-item>
+      <ion-item>Name <span class="item-note">{{order.name}}</span></ion-item>
+      <ion-item>Contact <span class="item-note">{{order.contact}}</span></ion-item>
+      <ion-item>Taxi <span class="item-note">{{order.taxi}}</span></ion-item>
+      <ion-item>Pickup Time <span class="item-note">{{order.pickup_time | amParse:'HHmm YYYYMMDD' | amDateFormat:'D MMM YYYY, HH:mm'}}</span></ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="bar-light animate-switch">
+    <div class="nav-bar">
+      <div class="nav">
+        <button class="button button-block button-positive" ng-click="backHome()">Close</button>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

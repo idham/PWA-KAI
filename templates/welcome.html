@@ -1,0 +1,22 @@
+<ion-view class="welcome" hide-nav-bar="true" cache-view="false">
+    <ion-content scroll="false">
+        <section class="container center">
+		    <form name="bookingform" class="bookingform" novalidate>
+		        <div class="item-row text-center padding">
+		           <img src="./img/logo.png" class="logo img-responsive" />
+		        </div>
+		        <div class="item-row text-center padding">
+		          <label class="item item-input">
+		            <i class="icon ion-ios-barcode-outline placeholder-icon"></i>
+		            <input type="text" placeholder="Kode Booking" ng-model="book_code" pattern="[A-Z0-9]{3,8}" minlength="3" maxlength="8" uppercase-only required>
+		          </label>
+		        </div>
+		        <div class="item-row text-center padding">
+		          <button class="button button-positive button-block" ng-disabled="bookingform.$invalid" ng-click="checkCode(book_code)">
+		            Submit
+		          </button>
+		        </div>  
+		    </form>
+        </section>
+    </ion-content>
+</ion-view>

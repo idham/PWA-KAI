@@ -1,0 +1,67 @@
+<ion-view class="home">
+  <ion-content ng-class="{'has-footer':data.order}">
+    <section class="hero text-center">
+      <img src="./img/logo.png" class="logo img-responsive" />
+    </section>
+		<div class="loading text-center" ng-if="isLoading">
+			<ion-spinner></ion-spinner>
+		</div>
+    <ion-list class="info text-center" type="card" ng-if="data.err_code>0">
+      <ion-item class="item-divider">
+        Error
+      </ion-item>
+      <ion-item class="item-text-wrap">
+			 <p>{{ data.err_msg }}</p>
+      </ion-item>
+    </ion-list>
+  	<div class="list card info" ng-if="data.err_code===0">
+      <ion-item class="item-divider">
+        Train
+        <!-- <span class="item-note" ng-click="doRefresh()"><i class="icon ion-refresh"></i></span> -->
+      </ion-item>
+      <ion-item class="item-icon-right">
+        <h2>{{data.book_code}}</h2>
+        <i class="icon ion-ios-barcode-outline positive"></i>
+      </ion-item>
+      <ion-item class="item-icon-right">
+        <h2>{{data.train_name}} {{data.train_no}}</h2>
+        <i class="icon ion-android-train positive"></i>
+      </ion-item>
+  		<ion-item>
+  			<p>Departing</p>
+  			<h2>{{data.org}} <span class="label item-right"><i class="icon ion-android-time"></i> {{data.dep_date + data.dep_time | amParse:'DD-MMM-YYHHmm' | amDateFormat:'D MMM YYYY, HH:mm'}}</span></h2>
+        <i class="icon ion-arrow-down-b positive"></i>
+  			<p>Arrival</p>
+  			<h2>{{data.des}} <span class="label item-right"><i class="icon ion-android-time"></i> {{data.arv_date + data.arv_time | amParse:'DD-MMM-YYHHmm' | amDateFormat:'D MMM YYYY, HH:mm'}}</span></h2>
+  		</ion-item>
+      <ion-item class="item-divider">
+        Passenger <span class="item-note positive">{{data.pax_list.length}}</span>
+      </ion-item>
+      <ion-item ng-repeat="pax in data.pax_list track by $index">
+        <h2>{{pax[0]}}</h2>
+        <p></p>
+        <p ng-if="pax[8] !== ''"><span class="label positive">{{pax[7]}}</span> <span class="label energized">{{pax[8]}}</span></p>
+      </ion-item>
+    </div>
+    <div class="list card info animate-switch" ng-if="orders.length > 0">
+      <ion-item class="item-divider" ng-click="reloadOrder()">
+        Orders
+        <span class="item-note balanced"><i class="icon ion-refresh"></i></span>
+      </ion-item>
+      <ion-item class="item-icon-right" ng-repeat="order in orders" ng-href="{{ (order.kategori === 'taxi') ? '#/order-taxi/' + order.id_nota :'#/order-porter/' + order.id_nota }}">
+        {{order.nota}}
+        <i class="icon" ng-class="order.kategori==='taxi'?'ion-model-s positive':'ion-briefcase energized'"></i>
+      </ion-item>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="bar-light animate-switch" ng-if="data.err_code===0 && !enableOrder">
+    <div class="nav-bar">
+      <div class="nav">
+        <button class="button ion-model-s button-block button-large button-positive" ng-click="openModal(1)">Taxi</button>
+      </div>
+      <div class="nav">
+        <button class="button ion-briefcase button-block button-large button-energized" ng-click="openModal(2)">Porter</button>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

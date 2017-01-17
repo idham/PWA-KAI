@@ -1,0 +1,27 @@
+<ion-view class="order" hide-nav-bar="true" cache-view="false">
+  <ion-content class="has-footer">
+    <div class="hero text-center">
+      <i class="icon large ion-briefcase energized"></i>
+      <div class="nota">
+        <h2>{{ (order.nota) ? order.nota : 'loading...'}}</h2>
+      </div>
+      <p>Status: Order Submitted</p>
+    </div>
+    <ion-list type="card" class="info" ng-if="!isLoading">
+      <ion-item class="item-divider" ng-click="doRefresh()">Detail Order <span class="item-note balanced"><i class="icon ion-refresh"></i></span></ion-item>
+      <ion-item>Book Code <span class="item-note">{{order.book_code}}</span></ion-item>
+      <ion-item>Station <span class="item-note">{{order.stasiun}}</span></ion-item>
+      <ion-item>Train <span class="item-note">{{order.train_name}} {{order.train_no}}</span></ion-item>
+      <ion-item>Seat <span class="item-note">{{order.seat}}</span></ion-item>
+      <ion-item>Wagon <span class="item-note">{{order.wagon}}</span></ion-item>
+      <ion-item>Porter <span class="item-note">{{order.porter_qty}}</span></ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="bar-light animate-switch">
+    <div class="nav-bar">
+      <div class="nav">
+        <button class="button button-block button-positive" ng-click="backHome()">Close</button>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>
