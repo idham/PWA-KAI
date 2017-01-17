@@ -1,0 +1,11 @@
+{
+  "name": "KAI Access",
+  "short_name": "KAI Access App",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}
