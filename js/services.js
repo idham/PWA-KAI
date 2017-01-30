@@ -87,7 +87,7 @@ angular.module('starter.services', [])
   }
 
   function getDetail(id_nota, type, callback) {
-    var url='https://www.skywise.id/kapi/api/',
+    var url='https://preorder.kai.id/kapi/api/',
         type = (type === 'taxi') ? 'detailTaxi' : 'detailPorter',
         id_nota = '/?nota=' + id_nota;
  
