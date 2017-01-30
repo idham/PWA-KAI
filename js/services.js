@@ -4,7 +4,7 @@ angular.module('starter.services', [])
   var cachedData;
  
   function getData(book_code, callback) {
-    var url='https://www.skywise.id/kapi/api/cekBook/?kobook=',
+    var url='https://preorder.kai.id/api/cekBook/?kobook=',
         book_code = encodeURIComponent(book_code);
  
     $http.jsonp(url + book_code + '&callback=JSON_CALLBACK').success(function(data) {
@@ -24,7 +24,7 @@ angular.module('starter.services', [])
   var cachedData;
  
   function setData(book_code, data, callback) {
-    var url='https://www.skywise.id/kapi/api/addTaxi2/?kobook=',
+    var url='https://preorder.kai.id/kapi/api/addTaxi2/?kobook=',
         book_code = encodeURIComponent(book_code),
         // pramia true untuk pramia
         pramia  = '&pramia=false',
@@ -51,7 +51,7 @@ angular.module('starter.services', [])
   var cachedData;
  
   function setData(book_code, data, callback) {
-    var url='https://www.skywise.id/kapi/api/addPorter2/?kobook=',
+    var url='https://preorder.kai.id/api/addPorter2/?kobook=',
         book_code = encodeURIComponent(book_code),
         // pramia true untuk pramia
         pramia  = '&pramia=false',
@@ -77,7 +77,7 @@ angular.module('starter.services', [])
   var cachedData;
  
   function getData(book_code, callback) {
-    var url='https://www.skywise.id/kapi/api/listOrder/?kobook=',
+    var url='https://preorder.kai.id/kapi/api/listOrder/?kobook=',
         book_code = encodeURIComponent(book_code);
  
     $http.jsonp(url + book_code + '&callback=JSON_CALLBACK').success(function(data) {
@@ -136,7 +136,7 @@ angular.module('starter.services', [])
   var cachedData;
  
   function setData(data, callback) {
-    var url='https://www.skywise.id/kapi/api/addRating/?id_nota=',
+    var url='https://preorder.kai.id/kapi/api/addRating/?id_nota=',
         id_nota = data.id_nota,
         rating = '&rating=' + data.rating,
         review = '&review=' + encodeURIComponent(data.review);
